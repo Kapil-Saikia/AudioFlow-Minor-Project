@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Music Player</title>
+    <title>Login - AudioFlow</title>
+    <meta name="description" content="Login to AudioFlow - Your Modern Music Streaming Experience">
+    <meta name="theme-color" content="#1db954">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -18,21 +20,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            background: linear-gradient(45deg, #1db954, #191414);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
         }
 
         @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .login-container {
@@ -45,6 +41,12 @@
             border: 1px solid rgba(255, 255, 255, 0.18);
             transform: translateY(0);
             transition: transform 0.3s ease;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .login-container:hover {
@@ -69,10 +71,17 @@
             padding: 15px 15px 15px 45px;
             border: none;
             border-radius: 10px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             color: white;
             font-size: 16px;
             transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #1db954;
+            box-shadow: 0 0 10px rgba(29, 185, 84, 0.3);
         }
 
         .input-group input::placeholder {
@@ -86,6 +95,11 @@
             transform: translateY(-50%);
             color: white;
             font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus + i {
+            color: #1db954;
         }
 
         button {
@@ -93,16 +107,23 @@
             padding: 15px;
             border: none;
             border-radius: 10px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            background: #1db954;
             color: white;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         button:hover {
-            transform: scale(1.02);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(29, 185, 84, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
         }
 
         .links {
@@ -115,35 +136,54 @@
             text-decoration: none;
             margin: 0 10px;
             font-size: 14px;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .links a:hover {
-            color: #ff6b6b;
+        .links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #1db954;
+            transition: width 0.3s ease;
+        }
+
+        .links a:hover::after {
+            width: 100%;
         }
 
         .error-message {
-            color: #ff6b6b;
-            background: rgba(255, 255, 255, 0.2);
+            color: #ff4b4b;
+            background: rgba(255, 75, 75, 0.1);
             padding: 10px;
             border-radius: 5px;
             margin-bottom: 20px;
             display: none;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h1>Welcome Back</h1>
+        <h1>Welcome to AudioFlow</h1>
         <div class="error-message" id="error-message"></div>
         <form id="login-form">
             <div class="input-group">
-                <i class="fas fa-envelope"></i>
                 <input type="email" placeholder="Email" required id="email">
+                <i class="fas fa-envelope"></i>
             </div>
             <div class="input-group">
-                <i class="fas fa-lock"></i>
                 <input type="password" placeholder="Password" required id="password">
+                <i class="fas fa-lock"></i>
             </div>
             <button type="submit">Login</button>
         </form>
