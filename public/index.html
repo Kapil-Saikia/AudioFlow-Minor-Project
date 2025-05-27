@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>MusicPlayer</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="#" class="nav-link active" data-tab="home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="nav-link" data-tab="search">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </a>
+                <a href="#" class="nav-link" data-tab="favorites">
+                    <i class="fas fa-heart"></i>
+                    <span>Favorites</span>
+                </a>
+                <a href="#" class="nav-link" data-tab="playlists">
+                    <i class="fas fa-list"></i>
+                    <span>Playlists</span>
+                </a>
+                <a href="#" class="nav-link" data-tab="recently-played">
+                    <i class="fas fa-history"></i>
+                    <span>Recently Played</span>
+                </a>
+            </nav>
+            <div class="user-section">
+                <span id="username">Loading...</span>
+                <button id="logout-btn">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Search for songs, artists, or albums...">
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content active" id="home-content">
+                <h2>All Songs</h2>
+                <div id="music-grid" class="music-grid"></div>
+            </div>
+
+            <div class="tab-content" id="search-content">
+                <h2>Search Results</h2>
+                <div class="search-results music-grid"></div>
+            </div>
+
+            <div class="tab-content" id="favorites-content">
+                <h2>Your Favorites</h2>
+                <div class="favorites-grid music-grid"></div>
+            </div>
+
+            <div class="tab-content" id="playlists-content">
+                <h2>Your Playlists</h2>
+                <button id="create-playlist" class="create-playlist-btn">
+                    <i class="fas fa-plus"></i> Create New Playlist
+                </button>
+                <div class="playlists-grid"></div>
+            </div>
+
+            <div class="tab-content" id="recently-played-content">
+                <h2>Recently Played</h2>
+                <div class="recently-played-grid music-grid"></div>
+            </div>
+        </main>
+
+        <!-- Player Bar -->
+        <footer class="player-bar">
+            <div class="now-playing">
+                <img src="img/1.jpg" alt="Album cover" id="current-track-img">
+                <div class="track-info">
+                    <h4 id="current-track-title">Select a song</h4>
+                    <p id="current-track-artist">Artist</p>
+                </div>
+                <button class="favorite-btn">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+
+            <div class="player-controls">
+                <div class="control-buttons">
+                    <button class="shuffle">
+                        <i class="fas fa-random"></i>
+                    </button>
+                    <button class="prev-track">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button class="play-pause">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="next-track">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                    <button class="repeat">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+                <div class="progress-container">
+                    <span class="current-time">0:00</span>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                    <span class="total-duration">0:00</span>
+                </div>
+            </div>
+
+            <div class="volume-controls">
+                <i class="fas fa-volume-up"></i>
+                <div class="volume-slider">
+                    <div class="volume-level"></div>
+                    <input type="range" min="0" max="1" step="0.01" value="1">
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/musicData.js"></script>
+    <script type="module" src="js/player.js"></script>
+</body>
+</html> 
