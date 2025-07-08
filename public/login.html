@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - AudioFlow</title>
     <meta name="description" content="Login to AudioFlow - Your Modern Music Streaming Experience">
-    <meta name="theme-color" content="#1db954">
+    <meta name="theme-color" content="#FF3366">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --neon-pink: #ff1177;
+            --neon-blue: #00fff2;
+            --neon-purple: #bc13fe;
+            --neon-yellow: #ffff00;
+            --neon-green: #39ff14;
+            --neon-orange: #ff6b08;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -20,45 +29,232 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(45deg, #1db954, #191414);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+            background: #000;
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Neon Background Animation */
+        .neon-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: 
+                linear-gradient(45deg, 
+                    rgba(255, 17, 119, 0.1) 0%,
+                    rgba(0, 255, 242, 0.1) 33%,
+                    rgba(188, 19, 254, 0.1) 66%,
+                    rgba(255, 255, 0, 0.1) 100%);
+            filter: blur(10px);
+            animation: neonFlow 10s linear infinite;
+        }
+
+        @keyframes neonFlow {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 200% 200%;
+            }
+        }
+
+        /* Neon Lines */
+        .neon-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .neon-line {
+            position: absolute;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                var(--neon-blue) 50%,
+                transparent 100%);
+            height: 2px;
+            width: 100%;
+            opacity: 0;
+            animation: neonLineMove 4s linear infinite;
+        }
+
+        .neon-line:nth-child(1) {
+            top: 20%;
+            animation-delay: 0s;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                var(--neon-pink) 50%,
+                transparent 100%);
+        }
+
+        .neon-line:nth-child(2) {
+            top: 40%;
+            animation-delay: 1s;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                var(--neon-blue) 50%,
+                transparent 100%);
+        }
+
+        .neon-line:nth-child(3) {
+            top: 60%;
+            animation-delay: 2s;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                var(--neon-purple) 50%,
+                transparent 100%);
+        }
+
+        .neon-line:nth-child(4) {
+            top: 80%;
+            animation-delay: 3s;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                var(--neon-green) 50%,
+                transparent 100%);
+        }
+
+        @keyframes neonLineMove {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        /* Neon Circles */
+        .neon-circles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .neon-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.5;
+            filter: blur(40px);
+            animation: neonPulse 4s ease-in-out infinite;
+        }
+
+        .neon-circle:nth-child(1) {
+            top: 20%;
+            left: 20%;
+            width: 200px;
+            height: 200px;
+            background: var(--neon-pink);
+            animation-delay: 0s;
+        }
+
+        .neon-circle:nth-child(2) {
+            top: 60%;
+            left: 60%;
+            width: 300px;
+            height: 300px;
+            background: var(--neon-blue);
+            animation-delay: 1s;
+        }
+
+        .neon-circle:nth-child(3) {
+            top: 40%;
+            right: 20%;
+            width: 250px;
+            height: 250px;
+            background: var(--neon-purple);
+            animation-delay: 2s;
+        }
+
+        .neon-circle:nth-child(4) {
+            bottom: 20%;
+            left: 40%;
+            width: 180px;
+            height: 180px;
+            background: var(--neon-green);
+            animation-delay: 3s;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
         }
 
         .login-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
             border-radius: 20px;
             padding: 40px;
             width: 400px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            transform: translateY(0);
-            transition: transform 0.3s ease;
-            animation: fadeIn 0.5s ease-out;
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 0 20px rgba(255, 17, 119, 0.2),
+                0 0 40px rgba(0, 255, 242, 0.2),
+                inset 0 0 20px rgba(188, 19, 254, 0.2);
+            animation: containerGlow 4s ease-in-out infinite;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .login-container:hover {
-            transform: translateY(-5px);
+        @keyframes containerGlow {
+            0%, 100% {
+                box-shadow: 
+                    0 0 20px rgba(255, 17, 119, 0.2),
+                    0 0 40px rgba(0, 255, 242, 0.2);
+            }
+            50% {
+                box-shadow: 
+                    0 0 30px rgba(188, 19, 254, 0.3),
+                    0 0 50px rgba(255, 255, 0, 0.2);
+            }
         }
 
         h1 {
-            color: white;
+            color: #fff;
             text-align: center;
             margin-bottom: 30px;
             font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 
+                0 0 10px var(--neon-blue),
+                0 0 20px var(--neon-blue),
+                0 0 30px var(--neon-blue);
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from {
+                text-shadow: 
+                    0 0 10px var(--neon-blue),
+                    0 0 20px var(--neon-blue);
+            }
+            to {
+                text-shadow: 
+                    0 0 15px var(--neon-pink),
+                    0 0 25px var(--neon-pink),
+                    0 0 35px var(--neon-pink);
+            }
         }
 
         .input-group {
@@ -71,21 +267,17 @@
             padding: 15px 15px 15px 45px;
             border: none;
             border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             color: white;
             font-size: 16px;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .input-group input:focus {
             outline: none;
-            border-color: #1db954;
-            box-shadow: 0 0 10px rgba(29, 185, 84, 0.3);
-        }
-
-        .input-group input::placeholder {
-            color: rgba(255, 255, 255, 0.8);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 255, 242, 0.3);
         }
 
         .input-group i {
@@ -93,13 +285,13 @@
             left: 15px;
             top: 50%;
             transform: translateY(-50%);
-            color: white;
+            color: var(--neon-blue);
             font-size: 20px;
             transition: all 0.3s ease;
         }
 
         .input-group input:focus + i {
-            color: #1db954;
+            color: var(--neon-pink);
         }
 
         button {
@@ -107,23 +299,47 @@
             padding: 15px;
             border: none;
             border-radius: 10px;
-            background: #1db954;
+            background: linear-gradient(45deg, 
+                var(--neon-blue),
+                var(--neon-purple));
             color: white;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(29, 185, 84, 0.4);
+            box-shadow: 
+                0 5px 20px rgba(0, 255, 242, 0.4),
+                0 0 20px rgba(188, 19, 254, 0.4);
         }
 
-        button:active {
-            transform: translateY(0);
+        button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: buttonShine 3s linear infinite;
+        }
+
+        @keyframes buttonShine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
 
         .links {
@@ -132,32 +348,22 @@
         }
 
         .links a {
-            color: white;
+            color: var(--neon-blue);
             text-decoration: none;
             margin: 0 10px;
             font-size: 14px;
-            transition: all 0.3s ease;
             position: relative;
+            transition: all 0.3s ease;
         }
 
-        .links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #1db954;
-            transition: width 0.3s ease;
-        }
-
-        .links a:hover::after {
-            width: 100%;
+        .links a:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
         }
 
         .error-message {
-            color: #ff4b4b;
-            background: rgba(255, 75, 75, 0.1);
+            color: var(--neon-pink);
+            background: rgba(255, 17, 119, 0.1);
             padding: 10px;
             border-radius: 5px;
             margin-bottom: 20px;
@@ -173,8 +379,21 @@
     </style>
 </head>
 <body>
+    <div class="neon-bg"></div>
+    <div class="neon-lines">
+        <div class="neon-line"></div>
+        <div class="neon-line"></div>
+        <div class="neon-line"></div>
+        <div class="neon-line"></div>
+    </div>
+    <div class="neon-circles">
+        <div class="neon-circle"></div>
+        <div class="neon-circle"></div>
+        <div class="neon-circle"></div>
+        <div class="neon-circle"></div>
+    </div>
     <div class="login-container">
-        <h1>Welcome to AudioFlow</h1>
+        <h1>Enter AudioFlow</h1>
         <div class="error-message" id="error-message"></div>
         <form id="login-form">
             <div class="input-group">
@@ -194,6 +413,7 @@
     </div>
 
     <script>
+        // Form submission
         document.getElementById('login-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value;

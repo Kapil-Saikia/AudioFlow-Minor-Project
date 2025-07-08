@@ -1,0 +1,33 @@
+{
+  "name": "minor-project",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.8.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kapil-Saikia/AudioFlow-Minor-Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kapil-Saikia/AudioFlow-Minor-Project/issues"
+  },
+  "homepage": "https://github.com/Kapil-Saikia/AudioFlow-Minor-Project#readme",
+  "description": ""
+}
